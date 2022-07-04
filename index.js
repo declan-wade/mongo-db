@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+const { MongoClient } = require('mongodb')
  
 const uri = "mongodb+srv://user:Fruitbat63@cluster0.0o25cqe.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri);

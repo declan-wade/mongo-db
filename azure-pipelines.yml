@@ -9,8 +9,8 @@ steps:
   inputs:
     ConnectionType: 'AzureRM'
     azureSubscription: 'Azure for Students(db149ad8-9501-46d1-888e-34e494c54713)'
-    appType: 'webAppLinux'
+    appType: 'webAppContainer'
     WebAppName: 'gundamire2'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'NODE|12-lts'
-    StartupCommand: 'node app.js'
+    DockerNamespace: 'hub.docker.com'
+    DockerRepository: 'node'
+    DockerImageTag: 'latest'

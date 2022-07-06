@@ -4,21 +4,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-jobs:
-- deployment: VMDeploy
-  displayName: Deploy to VM
-  environment: 
-   name: web
-   resourceType: VirtualMachine
-  strategy:
-     runOnce:
-        deploy:   
-          steps:
-            - task: NodeTool@0
-              inputs:
-                versionSpec: '12.x'
-              displayName: 'Install Node.js'
-            - script: |
-                npm install
-                node index.js
-              displayName: 'npm install and run'
+steps:
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Azure for Students(db149ad8-9501-46d1-888e-34e494c54713)'
+    appType: 'webAppLinux'
+    WebAppName: 'gundamire2'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|12-lts'
+    StartupCommand: 'node app.js'
